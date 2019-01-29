@@ -1,0 +1,53 @@
+body {
+	background-color: black;
+	font-family: Consolas, "Andale Mono WT", "Andale Mono";
+}
+
+#shell {
+	position: absolute;
+	padding-left: 20px;
+	width: 80%;
+	height: 90%;
+	left: 10%;
+	top: 5%;
+	border: 2px solid white;
+	color: white;
+	overflow-y: scroll;
+}
+
+#shellInput {
+	color: white;
+	background-color: black;
+	font-family: Consolas, "Andale Mono WT", "Andale Mono";
+	border: 0;
+}
+
+#shellInput:hover {
+	cursor: default;
+}
+
+#shellInput:focus {
+	outline-width: 0;
+}
+
+/* width */
+::-webkit-scrollbar {
+	width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: #fff;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	border-radius: 5px;
+	background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	pointer: cursor;
+	background: #555; 
+}
