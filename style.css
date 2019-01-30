@@ -51,3 +51,7 @@ body {
 	pointer: cursor;
 	background: #555; 
 }
+
+a {
+	color: #87cefa;
+}
