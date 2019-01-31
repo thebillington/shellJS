@@ -53,7 +53,7 @@ projects = [
 		"shellJS",
 		"A JavaScript bash shell",
 		["JavaScript", "HTML", "CSS"],
-		"shellJS is a website built in JavaScript that simulates a bash shell. The project was built as an overhaul to my personal website.",
+		"shellJS is a website built in JavaScript that simulates an interactive shell. The project was built as an overhaul to my personal website.",
 		"https://github.com/thebillington/shellJS",
 		["link","http://thebillington.co.uk"]
 	],
@@ -61,9 +61,17 @@ projects = [
 		"skazka",
 		"A narrative led, dungeon-crawling gameboy game",
 		["C", "GBDK"],
-		"skazka (Russian for 'fairytale') is a game built for the Global Game Jam 2019.<br>I managed a team of 2 artists, 2 narrative designers, 2 programmers, 1 musician and myself to bring the project together.<br>My role within the project was that of prpject lead/lead programmer and I ensured that all of the assets and narrative were in place, before tying together the technologies built by my 2 programmers into the final game.<br>Over the course of 48 hours we built the game from the ground up, creating an engine in C to help us handle dungeon crawling gameplay, artwork displayed on screen and narrative.",
+		"skazka (Russian for 'fairytale') is a game built for the Global Game Jam 2019.<br><br>I managed a team of 2 artists, 2 narrative designers, 2 programmers, 1 musician and myself to bring the project together. My role within the project was that of project lead/lead programmer and I ensured that all of the assets and narrative were in place, before tying together the technologies built by my 2 programmers into the final game. Over the course of 48 hours we built the game from the ground up, creating an engine in C to help us handle dungeon crawling gameplay, artwork displayed on screen and narrative.",
 		"https://github.com/thebillington/Skazka",
 		["instruction","To play, you must download the <b>.gb</b> file from the repository and open this in a real-hardware gameboy emulator. Alternatively you can flash to a cart and play on real hardware."]
+	],
+	[
+		"vehicleGame",
+		"A C++ implementation of OpenGL to create a 3D driving game",
+		["C++", "OpenGL", "GLEW", "GLFW3", "GLM", "stb_image"],
+		"Vehicle Game is a C++ implementation of OpenGL to create a 3D driving game. The project was built for my Christmas project 2018 over the space of 10 days. I built from the ground up, creating all of the meshes, textures and physics.",
+		"https://github.com/thebillington/VehicleGame",
+		["instruction","To run the game you must install GLEW, GLFW2, GLM and stb_image and link these as dependencies within the project. For more info, you can view the <b>compile.sh</b> script in the repo to see how to compile on MacOSX."]
 	]
 ];
 
@@ -153,7 +161,7 @@ function executeCommand() {
 		}
 		else if (cmd[1] == "-info") {
 			if (cmd.length == 2) {
-				println("Project-info-usage:");
+				println("Projects-info-usage:");
 				println("-------------------");
 				println(tab + "-info [project name] -- Find out more information about a specific project");
 				println("Err: Please specify a project name");
@@ -163,9 +171,33 @@ function executeCommand() {
 				printProjectInfo(cmd[2]);
 			}
 		}
+		else if (cmd[1] == "-repo") {
+			if (cmd.length == 2) {
+				println("Projects-repo-usage:");
+				println("-------------------");
+				println(tab + "-repo [project name] -- Open the repository for a specific project");
+				println("Err: Please specify a project name");
+				print("<br>");
+			}
+			else {
+				openProjectRepo(cmd[2]);
+			}
+		}
+		else if (cmd[1] == "-open") {
+			if (cmd.length == 2) {
+				println("Projects-open-usage:");
+				println("-------------------");
+				println(tab + "Open the website (or find out install info for) a project");
+				println("Err: Please specify a project name");
+				print("<br>");
+			}
+			else {
+				openProject(cmd[2]);
+			}
+		}
 	}
 	else if (cmd[0] != "") {
-		println("--Err: '" + cmd + "' was not recognised as an internal command");
+		println("--Err: '" + raw + "' was not recognised as an internal command");
 	}
 	
 	// Get ready for another command
@@ -217,14 +249,80 @@ function printProjectInfo(proj) {
 			// Print the project details
 			println(projects[i][0]+"-info:");
 			println("-------------------");
-			println("Name: " + projects[i][0]);
-			println("Brief: " + projects[i][1]);
-			println("Technology used:")
+			println(tab + "Name: " + projects[i][0]);
+			println(tab + "Brief: " + projects[i][1]);
+			println(tab + "Technology used:")
 			for (var j = 0; j < projects[i][2].length; j++) {
-				println(tab + "- " + projects[i][2][j]);
+				println(tab + tab + "- " + projects[i][2][j]);
 			}
-			println(projects[i][3]);
-			println("Repo: <a href='" + projects[i][4] + "' target='_blank'>" + projects[i][4] + "</a>");
+			println(tab + projects[i][3]);
+			println(tab + "Repo: <a href='" + projects[i][4] + "' target='_blank'>" + projects[i][4] + "</a>");
+			
+		}
+	}
+	// If the project doesn't exist, error
+	if(!exists) {
+		println("Error: Project '" + proj + "' doesn't exist, check your spelling");
+	}
+	print("<br>");
+	
+}
+
+// Function to print a specific project
+function openProjectRepo(proj) {
+	
+	// State whether the project exists or not
+	exists = false;
+	
+	// Iterate over each project
+	for(var i = 0; i < projects.length; i++) {
+		
+		// If the project name matches
+		if (projects[i][0].toLowerCase() == proj.toLowerCase()) {
+			
+			// Set exists to true
+			exists = true;
+			
+			// Open the repo
+			window.open(projects[i][4], "_blank");
+			
+		}
+	}
+	// If the project doesn't exist, error
+	if(!exists) {
+		println("Error: Project '" + proj + "' doesn't exist, check your spelling");
+	}
+	print("<br>");
+	
+}
+
+// Function to print a specific project
+function openProject(proj) {
+	
+	// State whether the project exists or not
+	exists = false;
+	
+	// Iterate over each project
+	for(var i = 0; i < projects.length; i++) {
+		
+		// If the project name matches
+		if (projects[i][0].toLowerCase() == proj.toLowerCase()) {
+			
+			// Set exists to true
+			exists = true;
+			
+			// Check whether the project is playable or instructional
+			if (projects[i][5][0] == "link") {
+			
+				// Open the repo
+				window.open(projects[i][5][1], "_blank");
+				
+			}
+			else {
+				println(projects[i][0]+"-instructions:");
+				println("-------------------");
+				println(tab + projects[i][5][1]);
+			}
 			
 		}
 	}

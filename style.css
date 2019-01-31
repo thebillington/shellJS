@@ -1,6 +1,7 @@
 body {
 	background-color: black;
 	font-family: Consolas, "Andale Mono WT", "Andale Mono";
+    color: #39ff14;
 }
 
 #shell {
@@ -10,8 +11,8 @@ body {
 	height: 90%;
 	left: 10%;
 	top: 5%;
-	border: 2px solid white;
-	color: white;
+	border: 2px solid #39ff14;
+	color: #39ff14;
 	overflow-y: scroll;
 }
 
@@ -37,19 +38,19 @@ body {
 
 /* Track */
 ::-webkit-scrollbar-track {
-	background: #fff;
+	background: #39ff14;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
 	border-radius: 5px;
-	background: #888; 
+	background: #228B22; 
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
 	pointer: cursor;
-	background: #555; 
+	background: #39ff14; 
 }
 
 a {
