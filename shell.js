@@ -72,6 +72,22 @@ projects = [
 		"Vehicle Game is a C++ implementation of OpenGL to create a 3D driving game. The project was built for my Christmas project 2018 over the space of 10 days. I built from the ground up, creating all of the meshes, textures and physics.",
 		"https://github.com/thebillington/VehicleGame",
 		["instruction","To run the game you must install GLEW, GLFW2, GLM and stb_image and link these as dependencies within the project. For more info, you can view the <b>compile.sh</b> script in the repo to see how to compile on MacOSX."]
+	],
+	[
+		"1978-SpaceInvaders",
+		"A version of space invaders built in conjunction with the Sandwell Academy '1978' project",
+		["Python", "tphysics"],
+		"The 1978 project celebrated the achievements first black players ever to grace the Premier League; Brendon Batson, Laurie Cunningham and Cyril Regies, also known as 'The Three Degrees'.<br><br>The 1978 play was written entirely by students of Sandwell Academy, and alongside the show, every lesson turned to a 1978 based curriculum for the week to allow students better understand the era.<br><br>Space Invaders was released in 1978, therefore I created a python library, built on top of tphysics, to allow students to create their own Space Invader game.",
+        "https://github.com/thebillington/SpaceInvaders",
+		["instruction","Download the python files and execute using a Python3 shell, such as the one built into IDLE."]
+	],
+	[
+		"90sSteam",
+		"A 90s version of the steam client with classic games reimagined for 2018...",
+		["JavaScript", "p5.js"],
+		"90s Steam is a website built for the Great Uni Hack Manshester 2018, submitted to the 'reimagined websites' category. As part of the project I built reimagined versions of classic games, such as 'Trump Invaders' and 'Brexit Pong'. The website was built in jest and has no political agenda.",
+        "https://github.com/thebillington/guh18",
+		["link","http://retrogamestrade.com/"]
 	]
 ];
 
